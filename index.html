@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Googleマップへリダイレクト中...</title>
+<script>
+  // 固定の目的地
+  const destination = encodeURIComponent("自宅");
+
+  // Googleマップのルート検索URL
+  const url = `https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${destination}&travelmode=driving`;
+
+  // 自動リダイレクト
+  window.location.href = url;
+</script>
+</head>
+<body>
+<p>Googleマップに移動中です。しばらくお待ちください...</p>
+</body>
+</html>
