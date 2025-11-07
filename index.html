@@ -7,11 +7,17 @@
   // 固定の目的地
   const destination = encodeURIComponent("自宅");
 
-  // Googleマップのルート検索URL
-  const url = `https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${destination}&travelmode=driving`;
+  // Googleマップアプリ用URLスキーム
+  const appUrl = `comgooglemaps://?saddr=Current+Location&daddr=${destination}&directionsmode=driving`;
 
-  // 自動リダイレクト
-  window.location.href = url;
+  // Web版GoogleマップURL（アプリがない場合のフォールバック）
+  const webUrl = `https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${destination}&travelmode=driving`;
+
+  // アプリで開けるか試して、ダメならWeb版へ
+  window.location.href = appUrl;
+  setTimeout(() => {
+    window.location.href = webUrl;
+  }, 1500); // 1.5秒後にWeb版へフォールバック
 </script>
 </head>
 <body>
